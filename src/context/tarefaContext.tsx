@@ -19,6 +19,7 @@ export const tarefaValoresIniciais: TarefaTypes = {
 export const TarefaProvider: FC<TarefaProviderProps> = ({ children }) => {
   const [tarefas, setTarefas] = useState<TarefaTypes[]>([]);
   const [tarefa, setTarefa] = useState<TarefaTypes>(tarefaValoresIniciais);
+  const [modoEditar, setModoEditar] = useState<boolean>(false);
 
   const criarTarefa = (tarefa: string) => {
     let nova_tarefa: TarefaTypes = {
@@ -67,7 +68,7 @@ export const TarefaProvider: FC<TarefaProviderProps> = ({ children }) => {
 
   return (
     <TarefaContext.Provider
-      value={{ tarefas, criarTarefa, editarNomeTarefa, editarStatusTarefa, removerTarefa, tarefa, setTarefa }}
+      value={{ tarefas, criarTarefa, editarNomeTarefa, editarStatusTarefa, removerTarefa, tarefa, setTarefa, modoEditar, setModoEditar }}
     >{children}</TarefaContext.Provider>
   );
 };

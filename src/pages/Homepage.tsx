@@ -15,9 +15,7 @@ export default function Homepage() {
       <Row>
         <Titulo />
         <Formulario />
-        <Col sm={12}>
-          <ListGroup></ListGroup>
-        </Col>
+        
       </Row>
     </Container>
   )
