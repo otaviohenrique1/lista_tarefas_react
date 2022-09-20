@@ -1,3 +1,5 @@
+import { SetStateAction } from "react";
+
 export type TarefaTypes = {
   id: string;
   tarefa: string;
@@ -11,9 +13,11 @@ export interface FormTypes {
 }
 
 export type TarefaContextType = {
-  tarefas: TarefaTypes[]; /* Ver se vai sair ou continuar */
+  tarefas: TarefaTypes[];
   criarTarefa: (tarefa: string) => void;
   editarNomeTarefa: (id: string, tarefa: string) => void;
   editarStatusTarefa: (id: string) => void;
   removerTarefa: (id: string) => void;
+  tarefa: TarefaTypes;
+  setTarefa: (value: SetStateAction<TarefaTypes>) => void
 }

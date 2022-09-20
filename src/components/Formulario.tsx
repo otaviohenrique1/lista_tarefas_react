@@ -17,7 +17,7 @@ export const validationSchema = yup.object().shape({
 });
 
 export function Formulario() {
-  const context = useContext(TarefaContext) as TarefaContextType;
+  const { criarTarefa } = useContext(TarefaContext) as TarefaContextType;
 
   return (
     <Col sm={12} className="mb-2">
@@ -26,7 +26,7 @@ export function Formulario() {
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={(values: FormTypes, helpers: FormikHelpers<FormTypes>) => {
-            console.log(values.tarefa);
+            criarTarefa(values.tarefa);
             helpers.resetForm();
           }}
         >
