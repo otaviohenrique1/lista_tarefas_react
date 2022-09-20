@@ -16,5 +16,4 @@ export type TarefaContextType = {
   editarNomeTarefa: (id: string, tarefa: string) => void;
   editarStatusTarefa: (id: string) => void;
   removerTarefa: (id: string) => void;
-  listarTarefas: () => TarefaTypes[];
 }
