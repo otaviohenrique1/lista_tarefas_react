@@ -27,7 +27,7 @@ export default function ListaItemEdicao(props: ListaItemEdicaoProps) {
 
   return (
     <>
-      <Col sm={12} className="mt-2 mb-4">
+      <Col sm={12} className="mt-2 mb-2">
         <Formik
           initialValues={{ tarefa: dataItem || "" }}
           validationSchema={validationSchema}
