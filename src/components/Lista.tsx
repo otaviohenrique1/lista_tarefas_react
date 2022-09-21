@@ -12,13 +12,9 @@ export default function Lista() {
     <Col sm={12}>
       <ListGroup>
         {(tarefas.length === 0)
-          ? (
-            <ListaItemVazio />
-          ) : (
-            tarefas.map((item, index) => (
-              <ListaItem key={index} data={item} />
-            ))
-          )}
+          ? <ListaItemVazio />
+          : tarefas.map((item, index) => <ListaItem key={index} data={item} />)
+        }
       </ListGroup>
     </Col>
   )

@@ -68,10 +68,10 @@ export default function ListaItemDados(props: ListaItemDadosProps) {
                   showConfirmButton: true,
                   cancelButtonText: "Não",
                   confirmButtonText: "Sim",
-                  buttonsStyling: true,
+                  buttonsStyling: false,
                   customClass: {
-                    cancelButton: "btn btn-danger",
-                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger mx-1",
+                    confirmButton: "btn btn-primary mx-1",
                   }
                 }).then(({ isConfirmed }) => {
                   if (isConfirmed) {
