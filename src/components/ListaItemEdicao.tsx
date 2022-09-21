@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { MdOutlineCancel } from 'react-icons/md';
 import { Button, ButtonGroup, Col, FormGroup } from 'reactstrap';
@@ -7,30 +7,34 @@ import { TarefaContext } from '../context/tarefaContext';
 import { FormTypes, TarefaContextType, TarefaTypes } from '../types/types';
 import { validationSchema } from '../utils/constantes';
 import { Flex } from './Flex';
-import ListaItemContainer from './ListaItemContainer';
 
 interface ListaItemEdicaoProps {
   data: TarefaTypes;
+  modoEditar: boolean;
+  setModoEditar: (value: React.SetStateAction<boolean>) => void;
 }
 
 export default function ListaItemEdicao(props: ListaItemEdicaoProps) {
-  const { id, tarefa, criado, atualizado } = props.data;
+  const { id, tarefa } = props.data;
+  
+  const [dataItem, setDataItem] = useState<string>("");
+  
+  useEffect(() => {
+    setDataItem(tarefa)
+  }, [tarefa]);
 
-  const { modoEditar, setModoEditar, editarNomeTarefa } = useContext(TarefaContext) as TarefaContextType;
-
-  const initialValues: FormTypes = {
-    tarefa: tarefa || "",
-  };
+  const { editarNomeTarefa } = useContext(TarefaContext) as TarefaContextType;
 
   return (
-    <ListaItemContainer criado={criado} atualizado={atualizado}>
+    <>
       <Col sm={12} className="mt-2 mb-4">
         <Formik
-          initialValues={initialValues}
+          initialValues={{ tarefa: dataItem || "" }}
           validationSchema={validationSchema}
+          enableReinitialize
           onSubmit={(values: FormTypes, helpers: FormikHelpers<FormTypes>) => {
             editarNomeTarefa(id, values.tarefa);
-            setModoEditar(!modoEditar);
+            props.setModoEditar(!props.modoEditar);
           }}
         >
           {({ values }) => (
@@ -78,7 +82,7 @@ export default function ListaItemEdicao(props: ListaItemEdicaoProps) {
                   <Button
                     color="secondary"
                     type="button"
-                    onClick={() => setModoEditar(!modoEditar)}
+                    onClick={() => props.setModoEditar(!props.modoEditar)}
                   >
                     <Flex alignItems="center" flexDirection="row">
                       <MdOutlineCancel />
@@ -91,6 +95,6 @@ export default function ListaItemEdicao(props: ListaItemEdicaoProps) {
           )}
         </Formik>
       </Col>
-    </ListaItemContainer>
+    </>
   );
 }
