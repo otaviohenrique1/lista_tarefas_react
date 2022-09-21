@@ -1,16 +1,22 @@
+import { useContext } from 'react';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { Button, ButtonGroup, Col, FormGroup, Input, Label } from 'reactstrap';
-import { TarefaTypes } from '../types/types';
+import { TarefaContext } from '../context/tarefaContext';
+import { TarefaContextType, TarefaTypes } from '../types/types';
 import { Flex } from './Flex';
 import ListaItemContainer from './ListaItemContainer';
 import { Paragrafo } from './Paragrafo';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 interface ListaItemProps {
   data: TarefaTypes;
 }
 
 export default function ListaItem(props: ListaItemProps) {
+  const MySwal = withReactContent(Swal);
   const { id, tarefa, feito, criado, atualizado } = props.data;
+  const { modoEditar, setModoEditar, editarStatusTarefa, removerTarefa } = useContext(TarefaContext) as TarefaContextType;
 
   return (
     <ListaItemContainer criado={criado} atualizado={atualizado}>
@@ -33,13 +39,13 @@ export default function ListaItem(props: ListaItemProps) {
               id={`feito-checkbox-${id}`}
               label="Feito"
               checked={feito}
-              onClick={() => { }} />
+              onClick={() => editarStatusTarefa(id)} />
             <Label check className="ms-2 form-check-label">Feito</Label>
           </FormGroup>
           <ButtonGroup>
             <Button
-              variant="primary"
-              onClick={() => { }}
+              color="primary"
+              onClick={() => setModoEditar(!modoEditar)}
               disabled={(feito) ? true : false}
             >
               <Flex alignItems="center" flexDirection="row">
@@ -48,8 +54,26 @@ export default function ListaItem(props: ListaItemProps) {
               </Flex>
             </Button>
             <Button
-              variant="danger"
-              onClick={() => { }}
+              color="danger"
+              onClick={() => {
+                MySwal.fire({
+                  title: <p>Remover tarefa</p>,
+                  html: <p className="text-center">Deseja remover a tarefa?</p>,
+                  icon: "warning",
+                  showCancelButton: true,
+                  showConfirmButton: true,
+                  cancelButtonText: "Não",
+                  confirmButtonText: "Sim",
+                  customClass: {
+                    cancelButton: "btn btn-danger",
+                    confirmButton: "btn btn-success",
+                  }
+                }).then(({isConfirmed}) => {
+                  if (isConfirmed) {
+                    removerTarefa(id);
+                  }
+                });
+              }}
               disabled={(feito) ? true : false}
             >
               <Flex alignItems="center" flexDirection="row">
