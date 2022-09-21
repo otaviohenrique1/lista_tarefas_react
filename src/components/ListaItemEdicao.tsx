@@ -37,7 +37,7 @@ export default function ListaItemEdicao(props: ListaItemEdicaoProps) {
             props.setModoEditar(!props.modoEditar);
           }}
         >
-          {({ values }) => (
+          {({ values, setFieldValue }) => (
             <Form>
               <FormGroup>
                 <Field
@@ -72,7 +72,8 @@ export default function ListaItemEdicao(props: ListaItemEdicaoProps) {
                   </Button>
                   <Button
                     color="danger"
-                    type="reset"
+                    type="button"
+                    onClick={() => setFieldValue("tarefa", "")}
                   >
                     <Flex alignItems="center" flexDirection="row">
                       <AiFillDelete />
