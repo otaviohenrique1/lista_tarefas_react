@@ -61,7 +61,7 @@ export default function ListaItemDados(props: ListaItemDadosProps) {
               color="danger"
               onClick={() => {
                 MySwal.fire({
-                  title: <p>Remover tarefa</p>,
+                  title: "Aviso",
                   html: <p className="text-center">Deseja remover a tarefa?</p>,
                   icon: "warning",
                   showCancelButton: true,
