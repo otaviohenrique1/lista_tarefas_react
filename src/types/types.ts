@@ -14,6 +14,7 @@ export interface FormTypes {
 
 export type TarefaContextType = {
   tarefas: TarefaTypes[];
+  setTarefas: (value: React.SetStateAction<TarefaTypes[]>) => void;
   criarTarefa: (tarefa: string) => void;
   editarNomeTarefa: (id: string, tarefa: string) => void;
   editarStatusTarefa: (id: string) => void;
