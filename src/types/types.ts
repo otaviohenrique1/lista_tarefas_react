@@ -19,8 +19,4 @@ export type TarefaContextType = {
   editarNomeTarefa: (id: string, tarefa: string) => void;
   editarStatusTarefa: (id: string) => void;
   removerTarefa: (id: string) => void;
-  tarefa: TarefaTypes;
-  setTarefa: (value: SetStateAction<TarefaTypes>) => void;
-  modoEditar: boolean;
-  setModoEditar: (value: React.SetStateAction<boolean>) => void
 }

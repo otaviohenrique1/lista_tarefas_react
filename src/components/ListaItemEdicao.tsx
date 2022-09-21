@@ -41,16 +41,16 @@ export default function ListaItemEdicao(props: ListaItemEdicaoProps) {
             <Form>
               <FormGroup>
                 <Field
-                  component="textarea"
+                  as="textarea"
                   className="form-control"
-                  id={`editar_tarefa_${id}`}
-                  name={`editar_tarefa_${id}`}
+                  id="tarefa"
+                  name="tarefa"
                   placeholder="Digite a tarefa"
                   value={values.tarefa}
                   rows={1}
                 />
                 <ErrorMessage
-                  name={`editar_tarefa_${id}`}
+                  name="tarefa"
                   component="span"
                   className="text-danger"
                 />

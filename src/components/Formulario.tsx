@@ -31,7 +31,7 @@ export function Formulario() {
               <FormGroup>
                 <Label htmlFor="tarefa">Nova tarefa</Label>
                 <Field
-                  component="textarea"
+                  as="textarea"
                   name="tarefa"
                   id="tarefa"
                   className="form-control"
