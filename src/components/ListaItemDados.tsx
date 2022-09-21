@@ -15,7 +15,7 @@ interface ListaItemDadosProps {
 }
 
 export default function ListaItemDados(props: ListaItemDadosProps) {
-  const MySwal = withReactContent(Swal);
+  const SwalModal = withReactContent(Swal);
   const { id, tarefa, feito } = props.data;
   const { editarStatusTarefa, removerTarefa } = useContext(TarefaContext) as TarefaContextType;
 
@@ -60,7 +60,7 @@ export default function ListaItemDados(props: ListaItemDadosProps) {
             <Button
               color="danger"
               onClick={() => {
-                MySwal.fire({
+                SwalModal.fire({
                   title: "Aviso",
                   html: <p className="text-center">Deseja remover a tarefa?</p>,
                   icon: "warning",
