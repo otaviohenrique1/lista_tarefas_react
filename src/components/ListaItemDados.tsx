@@ -40,7 +40,7 @@ export default function ListaItemDados(props: ListaItemDadosProps) {
                 type="checkbox"
                 id={`feito-checkbox-${id}`}
                 label="Feito"
-                checked={feito}
+                defaultChecked={feito}
                 onClick={() => editarStatusTarefa(id)}
               />
               <span className="ms-2">Feito</span>
@@ -79,7 +79,6 @@ export default function ListaItemDados(props: ListaItemDadosProps) {
                   }
                 });
               }}
-              disabled={(feito) ? true : false}
             >
               <Flex alignItems="center" flexDirection="row">
                 <AiFillDelete />
