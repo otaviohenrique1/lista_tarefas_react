@@ -61,9 +61,5 @@ export default function ListaItem(props: ListaItemProps) {
         </Flex>
       </Col>
     </ListaItemContainer>
-
-
-
-
   );
 }

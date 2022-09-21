@@ -1,5 +1,4 @@
 import { FormTypes, TarefaContextType } from "../types/types";
-import * as yup from "yup";
 import { Button, ButtonGroup, Col, FormGroup, Label } from "reactstrap";
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { Flex } from "./Flex";
@@ -7,14 +6,11 @@ import { MdOutlineAddCircleOutline } from "react-icons/md";
 import { AiOutlineClear } from "react-icons/ai";
 import { useContext } from "react";
 import { TarefaContext } from "../context/tarefaContext";
+import { validationSchema } from "../utils/constantes";
 
-export const initialValues: FormTypes = {
+const initialValues: FormTypes = {
   tarefa: ""
 };
-
-export const validationSchema = yup.object().shape({
-  tarefa: yup.string().required("Campo vazio"),
-});
 
 export function Formulario() {
   const { criarTarefa } = useContext(TarefaContext) as TarefaContextType;

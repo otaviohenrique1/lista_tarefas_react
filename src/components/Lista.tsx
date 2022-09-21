@@ -16,10 +16,7 @@ export default function Lista() {
             <ListaItemVazio />
           ) : (
             tarefas.map((item, index) => (
-              <ListaItem
-                key={index}
-                data={item}
-              />
+              <ListaItem key={index} data={item} />
             ))
           )}
       </ListGroup>
