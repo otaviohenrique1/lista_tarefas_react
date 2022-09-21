@@ -1,6 +1,7 @@
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { Button, ButtonGroup, Col, FormGroup, Input, Label, ListGroupItem, Row } from 'reactstrap';
 import { TarefaTypes } from '../types/types';
+import { FormataData } from '../utils/Formatador';
 import { Flex } from './Flex';
 import { Paragrafo } from './Paragrafo';
 
@@ -65,13 +66,13 @@ export default function ListaItem(props: ListaItemProps) {
             <Col sm={12} md={6} className="m-0 p-0">
               <div className="rounded border py-1 px-2 m-1">
                 <span className="me-1">Criado em:</span>
-                <span>{FormataData(item.criado)}</span>
+                <span>{FormataData(criado)}</span>
               </div>
             </Col>
             <Col sm={12} md={6} className="m-0 p-0">
               <div className="rounded border py-1 px-2 m-1">
                 <span className="me-1">Modificado em:</span>
-                <span>{FormataData(item.atualizado)}</span>
+                <span>{FormataData(atualizado)}</span>
               </div>
             </Col>
           </Row>
